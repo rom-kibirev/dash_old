@@ -1,0 +1,13 @@
+.slider {
+    @apply fixed h-screen text-white rounded-r-md shadow-xl shadow-black w-72 transition-all duration-500 ease-in-out
+    bg-gradient-to-t from-[rgb(25,15,60)] to-[rgb(5,0,25)]
+}
+.collapsed {
+    @apply w-14 transition-all duration-500 ease-in-out
+}
+.nav-button {
+    @apply flex justify-end mt-2 md:mt-3 xl:mt-4 pr-2 md:mt-4
+}
+.collapsed .nav-button {
+    @apply pr-1.5
+}
