@@ -1,6 +1,7 @@
 import styles from './slide-nav.module.css';
 import Burger from './Burger';
 import User from "./User/User";
+import ProjectControl from "./User/ProjectControl/ProjectControl";
 
 const Pult = (props) => {
     
@@ -10,7 +11,9 @@ const Pult = (props) => {
                 <Burger setExpanded={props.setExpanded} state={props.state} />
             </div>
             <User state={props.state} />
-            <div>ProjectControl</div>
+            <div className="border border-amber-500 py-2 my-1">
+                <ProjectControl />
+            </div>
         </div>
     )
 }

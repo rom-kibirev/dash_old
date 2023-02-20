@@ -5,22 +5,22 @@
     @apply w-6 h-6 mt-1 bg-contain bg-center bg-no-repeat
 }
 .container select {
-    @apply bg-[rgb(50,55,80)] ml-3 px-2 py-1 rounded-md w-full
+    @apply bg-pult-button ml-3 px-2 py-1 rounded-md w-full
 }
 
 .collapsed {
     @apply px-0 mb-2 flex justify-center
 }
 .collapsed .icon {
-    @apply w-9 h-9 bg-[rgb(50,55,80)] rounded-full cursor-pointer bg-contain bg-60% bg-center bg-no-repeat
+    @apply w-9 h-9 bg-pult-button rounded-full cursor-pointer bg-contain bg-60% bg-center bg-no-repeat
     transition-all duration-300 ease-in-out
 }
 .collapsed .icon:hover {
-    @apply bg-[rgb(75,77,90)] shadow-md shadow-white
+    @apply bg-pult-hover shadow-md shadow-white
     transition-all duration-300 ease-in-out
 }
 .dropdown {
-    @apply w-max bg-[rgb(50,55,80)] left-11 p-2 fixed rounded shadow shadow-black scale-y-0
+    @apply w-max bg-pult-button left-11 p-2 fixed rounded shadow shadow-black scale-y-0
     translate-x-4 duration-300 ease-in-out
 }
 .dropdown-show {
@@ -28,8 +28,8 @@
     transition-all duration-300 ease-in-out
 }
 .dropdown li {
-    @apply mb-1 border-b border-[rgb(75,77,90)] cursor-pointer
+    @apply mb-1 border-b border-pult-hover cursor-pointer
 }
 .dropdown li:hover {
-    @apply bg-[rgb(75,77,90)]
+    @apply bg-pult-hover
 }

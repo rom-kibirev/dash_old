@@ -39,9 +39,21 @@ export const UserContextProvider = (props) => {
         });
     }
 
+    const templateNames = {
+        "depositor": "Инвестор",
+        "administrator": "Администратор",
+        "coordinator": "Координатор",
+        "technical-control": "Стройконтроль",
+        "section-manager": "Начальник участка",
+        "engineer": "ГИП",
+        "contractor": "Подрядчик",
+    };
+
     if (!userData) {
         console.log('\n error GET current user data');
     } else {
+
+        userData.groups.map(group => group.name = templateNames[group.type]);
 
         return <UserContext.Provider value={{
             userState: {

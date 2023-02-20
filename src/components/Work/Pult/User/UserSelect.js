@@ -15,7 +15,11 @@ const UserSelect = (props) => {
     };
 
     const changeUserStateHandler = (event) => props.onChageUserState(props.type, +event.target.value);
-    const changeUserStateFromLiHandler = (event) => props.onChageUserState(props.type, +event.target.dataset.id);
+    const changeUserStateFromLiHandler = (event) => {
+
+        props.onChageUserState(props.type, +event.target.dataset.id);
+        setIsShown(false);
+    }
 
     const showSelectHandler = () => setIsShown(true);
     const hideSelectHandler = () => setIsShown(false);
@@ -23,7 +27,7 @@ const UserSelect = (props) => {
     if (props.state) {
         return (
             <div className={styles.container}>
-                <div className={styles.icon} onClick={showSelectHandler} style={{ backgroundImage: `url(${template[props.type].icon})` }} title={template[props.type].title}></div>
+                <div className={styles.icon} onClick={showSelectHandler} style={{backgroundImage: `url(${template[props.type].icon})`}} title={template[props.type].title}></div>
                 <select defaultValue={props.defaultValue} name={props.type} onChange={changeUserStateHandler} >
                     {props.options.map((item) => (<option value={item.id} key={item.id}>{item.name}</option>))}
                 </select>
