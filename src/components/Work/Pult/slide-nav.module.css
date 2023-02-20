@@ -1,9 +1,16 @@
 .slider {
-    @apply fixed h-screen text-white rounded-r-md shadow-xl shadow-black w-72 transition-all duration-500 ease-in-out
-    bg-gradient-to-t from-[rgb(25,15,60)] to-[rgb(5,0,25)]
+    @apply
+    w-72
+    /*w-36*/
+    fixed h-screen text-white rounded-r-md shadow-md shadow-black
+    bg-gradient-to-t from-[rgb(25,15,60)] to-[rgb(5,0,25)] z-[9999]
+    transition-all duration-500 ease-in-out
 }
 .collapsed {
-    @apply w-14 transition-all duration-500 ease-in-out
+    @apply
+    /*w-40*/
+    w-14
+    transition-all duration-500 ease-in-out
 }
 .nav-button {
     @apply flex justify-end mt-2 md:mt-3 xl:mt-4 pr-2 md:mt-4
@@ -11,3 +18,19 @@
 .collapsed .nav-button {
     @apply pr-1.5
 }
+
+/*.user-menu {*/
+/*    @apply overflow-y-auto h-[calc(100vh-100px)] flex-auto*/
+/*}*/
+/*.user-menu::-webkit-scrollbar {*/
+/*    @apply w-2*/
+/*}*/
+/*.user-menu::-webkit-scrollbar-track {*/
+/*    @apply rounded-[100vh] bg-transparent*/
+/*}*/
+/*.user-menu::-webkit-scrollbar-thumb {*/
+/*    @apply bg-[rgb(45,35,70)] rounded-[100vh]*/
+/*}*/
+/*.user-menu::-webkit-scrollbar-thumb:hover {*/
+/*    @apply bg-[rgb(55,55,110)]*/
+/*}*/

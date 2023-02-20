@@ -1,0 +1,36 @@
+.member {
+    @apply px-4 mb-4
+}
+.member label {
+    @apply text-xl break-words max-h-16 block truncate
+}
+.member .logout {
+    @apply my-2
+    transition-all duration-500 ease-in-out
+}
+.member .logout .expanded-logout button {
+    @apply bg-white text-[rgb(25,15,60)] w-full p-1 rounded
+    transition-all duration-300 ease-in-out
+}
+.member .logout .expanded-logout button:hover {
+    @apply bg-[rgb(75,77,90)] text-white
+    transition-all duration-300 ease-in-out
+}
+
+.collapsed {
+    @apply px-0 mb-2;
+}
+.collapsed label {
+    @apply hidden
+}
+.collapsed .logout {
+    @apply flex justify-center my-0
+    transition-all duration-500 ease-in-out
+}
+.collapsed .collapsed-logout button {
+    @apply w-11 h-11 bg-[rgb(50,55,80)] p-2 mr-1 rounded-full cursor-pointer fill-white
+    transition-all duration-300 ease-in-out
+}
+.collapsed .collapsed-logout button:hover {
+    @apply bg-[rgb(75,77,90)] shadow-md shadow-white
+}

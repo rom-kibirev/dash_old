@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {UserContextProvider} from "../../store/user/UserContextProvider";
 import Pult from "./Pult/Pult";
 
 const Work = (props) => {
@@ -8,21 +9,21 @@ const Work = (props) => {
     useEffect(() => {
         const userExpand = localStorage.getItem('expanded');
 
-        userExpand === '1' ? setExpanded(true) : setExpanded(false);
+        if (userExpand === '1') setExpanded(false);
 
     }, []);
 
     const expandHandler = (state) => {
         setExpanded(state);
 
-        state ? localStorage.setItem('expanded', '1') : localStorage.setItem('expanded', '');
+        state ? localStorage.setItem('expanded', '') : localStorage.setItem('expanded', '1');
     }
 
     return (
-        <React.Fragment>
+        <UserContextProvider>
             <Pult setExpanded={expandHandler} state={expanded} />
-            <section>Secction</section>
-        </React.Fragment>
+            <section className="ml-16">Secction</section>
+        </UserContextProvider>
     )
 }
 
