@@ -6,7 +6,6 @@
 }
 .member .logout {
     @apply my-2
-    transition-all duration-500 ease-in-out
 }
 .logout .expanded-logout button {
     @apply bg-white text-pult w-full p-1 rounded

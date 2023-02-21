@@ -4,9 +4,10 @@ import UserContext from './user-context';
 export const UserContextProvider = (props) => {
 
     const [userData, setUserData] = useState();
+    const serverUrl = 'http://localhost:8000/';
 
     useEffect(() => {
-        fetch('http://localhost:8000/?filename=current-user.json', {method: 'GET'})
+        fetch(serverUrl + '?filename=current-user.json', {method: 'GET'})
             .then(response => response.json())
             .then(data => setUserData(JSON.parse(data)));
     },[]);
@@ -25,7 +26,7 @@ export const UserContextProvider = (props) => {
             chengedData.group_id = id;
         }
 
-        fetch('http://localhost:8000/', {
+        fetch(serverUrl, {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             body: new URLSearchParams({
@@ -43,8 +44,8 @@ export const UserContextProvider = (props) => {
         "depositor": "Инвестор",
         "administrator": "Администратор",
         "coordinator": "Координатор",
-        "technical-control": "Стройконтроль",
         "section-manager": "Начальник участка",
+        "technical-control": "Стройконтроль",
         "engineer": "ГИП",
         "contractor": "Подрядчик",
     };

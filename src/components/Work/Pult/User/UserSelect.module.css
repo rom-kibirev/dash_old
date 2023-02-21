@@ -33,3 +33,6 @@
 .dropdown li:hover {
     @apply bg-pult-hover
 }
+.dropdown .selected {
+    @apply bg-pult-selected
+}

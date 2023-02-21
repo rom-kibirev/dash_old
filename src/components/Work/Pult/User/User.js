@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useState} from "react";
 import styles from "./User.module.css";
 import UserContext from "../../../../store/user/user-context";
 import LogutIcon from "../Icons/logout.svg";
@@ -8,14 +8,28 @@ const User = (props) => {
 
     const userContext = useContext(UserContext);
 
-    const chageUserState = (type,id) => userContext.changeState(type,id);
+    const changeUserState = (type,id) => userContext.changeState(type,id);
+
+    const [shownList,setShownList] = useState('');
+
+    const showListHandler = (id) => setShownList(id);
 
     const userSelectArray = [];
     for (const id in userContext.userState) {
 
         const item = userContext.userState[id];
 
-        userSelectArray.push(<UserSelect key={id} type={id} defaultValue={item.id} options={item.option} onChageUserState={chageUserState} state={props.state} />);
+        userSelectArray.push(<UserSelect
+            key={id}
+            type={id}
+            defaultValue={item.id}
+            options={item.option}
+            onChageUserState={changeUserState}
+            state={props.state}
+            showList={id === shownList}
+            onChangeShowList={() => showListHandler(id)}
+            setShownList={setShownList}
+        />);
     }
 
     return (

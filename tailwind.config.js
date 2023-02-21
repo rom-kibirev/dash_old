@@ -13,6 +13,7 @@ module.exports = {
         'pult-dark': '#050019',
         'pult-button': '#2d3750',
         'pult-hover': '#4b4d5a',
+        'pult-selected': '#696b82',
       },
     },
     backgroundSize: {
