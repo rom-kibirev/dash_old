@@ -9,6 +9,7 @@ const UserContext = React.createContext({
     userName: '',
     selectedGroup: '',
     changeState: (type,id) => {},
+    requestHost: '',
 });
 
 export default UserContext;

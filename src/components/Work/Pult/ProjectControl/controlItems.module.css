@@ -11,7 +11,7 @@
 }
 @keyframes shoItems {
     0% {
-        @apply -left-[50vw]
+        @apply -left-[350%]
     }
     100% {
         @apply left-0
