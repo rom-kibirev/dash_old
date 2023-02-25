@@ -12,19 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo 'Данные сохранены - ' . $_POST['file'];
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    $filename = './data/'.$_GET['filename'];
+    $filename = './data/'.$_GET['filename'].'.json';
+
     $file = fopen($filename, 'r');
 
     if ($file) {
         $data = fread($file, filesize($filename));
         fclose($file);
 
-        $json = json_encode($data);
-
         header('Content-Type: application/json');
-        echo $json;
+        $json = json_encode($data,true);
+        echo json_decode($json);
     } else {
         header('HTTP/1.1 500 Internal Server Error');
-        echo 'Unable to open file';
+        echo false;
     }
 }

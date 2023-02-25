@@ -5,7 +5,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      transitionDelay: {
+      transitionDuration: {
         '0': '0ms',
       },
       colors: {
@@ -14,6 +14,7 @@ module.exports = {
         'pult-button': '#2d3750',
         'pult-hover': '#4b4d5a',
         'pult-selected': '#696b82',
+        'warning': '#ff9664',
       },
     },
     backgroundSize: {

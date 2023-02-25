@@ -2,7 +2,7 @@
     @apply
     w-72
     /*w-36*/
-    fixed h-screen text-white rounded-r-md shadow-md shadow-black
+    fixed h-full text-white rounded-r-md shadow-md shadow-black flex flex-col
     bg-gradient-to-t from-pult to-pult-dark
     transition-all duration-500 ease-in-out
 }
@@ -13,24 +13,27 @@
     transition-all duration-500 ease-in-out
 }
 .nav-button {
-    @apply flex justify-end mt-2 md:mt-3 xl:mt-4 pr-2 md:mt-4
+    @apply flex justify-end mt-0.5 md:mt-2
 }
 .collapsed .nav-button {
-    @apply pr-1.5
+    @apply justify-center
 }
 
-/*.user-menu {*/
-/*    @apply overflow-y-auto h-[calc(100vh-100px)] flex-auto*/
-/*}*/
-/*.user-menu::-webkit-scrollbar {*/
-/*    @apply w-2*/
-/*}*/
-/*.user-menu::-webkit-scrollbar-track {*/
-/*    @apply rounded-[100vh] bg-transparent*/
-/*}*/
-/*.user-menu::-webkit-scrollbar-thumb {*/
-/*    @apply bg-[rgb(45,35,70)] rounded-[100vh]*/
-/*}*/
-/*.user-menu::-webkit-scrollbar-thumb:hover {*/
-/*    @apply bg-[rgb(55,55,110)]*/
-/*}*/
+.controller-list {
+    @apply py-2 my-1 overflow-y-auto overflow-x-hidden grow
+}
+.controller-list::-webkit-scrollbar {
+    @apply w-2
+}
+.controller-list::-webkit-scrollbar-track {
+    @apply rounded-[100vh] bg-transparent
+}
+.controller-list::-webkit-scrollbar-thumb {
+    @apply bg-pult-hover rounded-[100vh]
+}
+.controller-list::-webkit-scrollbar-thumb:hover {
+    @apply bg-pult-selected
+}
+.warning-message {
+    @apply text-center bg-warning text-pult font-bold
+}

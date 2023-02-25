@@ -7,9 +7,11 @@ export const UserContextProvider = (props) => {
     const serverUrl = 'http://localhost:8000/';
 
     useEffect(() => {
-        fetch(serverUrl + '?filename=current-user.json', {method: 'GET'})
+        fetch(serverUrl + '?filename=current-user', {method: 'GET'})
             .then(response => response.json())
-            .then(data => setUserData(JSON.parse(data)));
+            .then(data => {
+                setUserData(data)
+            });
     },[]);
 
     const changeUserStateHandler = (type,id) => {
@@ -33,9 +35,9 @@ export const UserContextProvider = (props) => {
                 'place': 'current-user.json',
                 'data': JSON.stringify(chengedData)
             }),
-        }).then(res => {
-            if (res.ok) setUserData(chengedData);
-        }).catch(err => {
+        }).then(result => {
+            if (result.ok) setUserData(chengedData);
+        }).catch(error => {
             console.log('\n error POST current user data');
         });
     }

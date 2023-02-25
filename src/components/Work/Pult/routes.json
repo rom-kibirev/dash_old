@@ -1,0 +1,176 @@
+{
+  "depositor": [
+    {
+      "id": "1.1",
+      "title": "Тарифы",
+      "href": "rates"
+    },
+    {
+      "id": "1.2",
+      "title": "Контроль финансов",
+      "href": "financial-control"
+    },
+    {
+      "id": "1.3",
+      "title": "Контроль качества работ",
+      "href": "quality-control-works"
+    }
+  ],
+  "administrator": [
+    {
+      "id": "2.1",
+      "title": "Управление пользователями",
+      "href": "users-management"
+    },
+    {
+      "id": "2.2",
+      "title": "Управление проектами",
+      "href": "projects-management"
+    },
+    {
+      "id": "2.3",
+      "title": "Управление подрядчиками",
+      "href": "contrators-management"
+    }
+  ],
+  "coordinator": [
+    {
+      "id": "3.1",
+      "title": "Финансовый план",
+      "href": "financial-schedule"
+    },
+    {
+      "id": "3.2",
+      "title": "Информация по объекту",
+      "href": "object-information"
+    },
+    {
+      "id": "3.3",
+      "title": "Представители компании",
+      "href": "company-representatives"
+    },
+    {
+      "id": "3.4",
+      "title": "Сведения о государственном строительном надзоре",
+      "href": "construction-supervision"
+    },
+    {
+      "id": "3.5",
+      "title": "Конфигуратор планов",
+      "href": "plan-configurator"
+    },
+    {
+      "id": "3.6",
+      "title": "Производственный календарь",
+      "href": "production-calendar"
+    },
+    {
+      "id": "3.7",
+      "title": "Тендеры",
+      "href": "tenders"
+    },
+    {
+      "id": "3.8",
+      "title": "Проверка данных",
+      "request": "verification-contractor-data"
+    },
+    {
+      "id": "3.9",
+      "title": "Документы подрядчиков",
+      "request": "contractor-documentation"
+    }
+  ],
+  "section-manager": [
+    {
+      "id": "4.1",
+      "title": "Информация по объекту",
+      "href": "object-information"
+    },
+    {
+      "id": "4.2",
+      "title": "Смета подрядчиков",
+      "request": "contractors-estimates"
+    },
+    {
+      "id": "4.3",
+      "title": "Сводный сметный расчёт (ССР)",
+      "href": "consolidated-estimate-calculation"
+    },
+    {
+      "id": "4.4",
+      "title": "Оплата работ",
+      "request": "payment-work"
+    },
+    {
+      "id": "4.5",
+      "title": "График",
+      "href": "financial-control"
+    },
+    {
+      "id": "4.6",
+      "title": "Журнал работ",
+      "href": "job-log"
+    },
+    {
+      "id": "4.7",
+      "title": "Геодезическая разбивочная основа",
+      "href": "geodetic-center-base"
+    },
+    {
+      "id": "4.8",
+      "title": "Приём-передача участка",
+      "href": "acceptance-transfer-site"
+    },
+    {
+      "id": "4.9",
+      "title": "Поставить задачу ГИП",
+      "href": "task-engineer"
+    }
+  ],
+  "technical-control": [
+    {
+      "id": "5.1",
+      "title": "Контроль качества работ",
+      "href": "quality-control"
+    },
+    {
+      "id": "5.2",
+      "title": "Согласование документов поданных работ",
+      "request": "coordination-documents-submitted-works"
+    }
+  ],
+  "engineer": [
+    {
+      "id": "6.1",
+      "title": "Задача от начальника участка",
+      "href": "section-manager-tasks"
+    }
+  ],
+  "contractor": [
+    {
+      "id": "7.1",
+      "title": "Журнал работ",
+      "href": "job-log"
+    },
+    {
+      "id": "7.2",
+      "title": "Отчет КС-6а",
+      "href": "report-ks6a"
+    },
+    {
+      "id": "7.3",
+      "title": "Статус исполнения договора ",
+      "href": "contract-execution-status"
+    },
+    {
+      "id": "7.4",
+      "title": "Предписания",
+      "request": "prescriptions"
+    },
+    {
+      "id": "7.5",
+      "title": "Оплата работ",
+      "request": "contractor-payment-work"
+    }
+  ]
+}

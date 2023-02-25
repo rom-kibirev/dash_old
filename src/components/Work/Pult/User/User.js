@@ -1,4 +1,4 @@
-import React,{useContext,useState} from "react";
+import React,{useContext} from "react";
 import styles from "./User.module.css";
 import UserContext from "../../../../store/user/user-context";
 import LogutIcon from "../Icons/logout.svg";
@@ -10,10 +10,6 @@ const User = (props) => {
 
     const changeUserState = (type,id) => userContext.changeState(type,id);
 
-    const [shownList,setShownList] = useState('');
-
-    const showListHandler = (id) => setShownList(id);
-
     const userSelectArray = [];
     for (const id in userContext.userState) {
 
@@ -21,14 +17,13 @@ const User = (props) => {
 
         userSelectArray.push(<UserSelect
             key={id}
-            type={id}
+            id={id}
             defaultValue={item.id}
             options={item.option}
             onChageUserState={changeUserState}
             state={props.state}
-            showList={id === shownList}
-            onChangeShowList={() => showListHandler(id)}
-            setShownList={setShownList}
+            shownList={props.shownList}
+            showListHandler={props.showListHandler}
         />);
     }
 
