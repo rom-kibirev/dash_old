@@ -75,7 +75,8 @@ export const UserContextProvider = (props) => {
             },
             userName: userData.name,
             selectedGroup: userData.groups.filter(list => list.id === +userData.group_id)[0].type,
-            changeState: changeUserStateHandler
+            changeState: changeUserStateHandler,
+            requestHost: serverUrl
         }}>
             {props.children}
         </UserContext.Provider>;

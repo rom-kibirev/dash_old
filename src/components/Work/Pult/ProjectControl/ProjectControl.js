@@ -1,14 +1,15 @@
-import {useContext,useState,useEffect} from "react";
+import React,{useContext,useState,useEffect} from "react";
 import UserContext from "../../../../store/user/user-context";
 import routes from "../routes.json";
 import ControlItem from "./ControlItem";
+import styles from "./project-control.module.css";
+import {ReactComponent as Warning} from "../Icons/warning.svg";
 
 const ProjectControl = (props) => {
 
     const companyId = useContext(UserContext).userState.company.id;
     const group = useContext(UserContext).selectedGroup;
-    const serverUrl = 'http://localhost:8000/?filename=';
-    const [isRequest, setIsRequest] = useState(false);
+    const serverUrl = useContext(UserContext).requestHost + '?filename=';
     const [getData,setGetData] = useState([]);
     useEffect(() => {
 
@@ -34,14 +35,12 @@ const ProjectControl = (props) => {
                 .catch(error => {
                     console.log('\n error project control request');
                 });
-
-            setIsRequest(true);
         } else {
-            setIsRequest(false);
         }
-    },[group,setGetData,isRequest]);
+    },[group,setGetData,serverUrl]);
 
     const itemList = [];
+    let warningMessage = '';
     routes[group].forEach(route => {
         if (route.href) itemList.push(<ControlItem
             key={route.id}
@@ -72,10 +71,25 @@ const ProjectControl = (props) => {
                 showListHandler={props.showListHandler}
                 state={props.state}
             />);
+            else if (getData[route.id].message) {
+
+                warningMessage = (<li className={`${props.state ? styles.warning: styles['warning-collapsed']}`} title={getData[route.id].message}>
+                    <Warning />
+                    <div>{getData[route.id].message}</div>
+                </li>);
+
+                // if (props.state) warningMessage = (<li className={styles.warning}><Warning />{getData[route.id].message}</li>);
+                // else warningMessage = (<li className={styles.warning} title={getData[route.id].message}><Warning /></li>);
+            }
         }
     });
 
-    return itemList;
+    return (
+        <React.Fragment>
+            {warningMessage}
+            {itemList}
+        </React.Fragment>
+    );
 }
 
 export default ProjectControl;

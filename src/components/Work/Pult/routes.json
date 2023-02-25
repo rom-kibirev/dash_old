@@ -165,7 +165,7 @@
     {
       "id": "7.4",
       "title": "Предписания",
-      "request": "prescriptions"
+      "request": "contractor-prescriptions"
     },
     {
       "id": "7.5",
