@@ -1,7 +1,7 @@
 import React,{useContext} from "react";
 import styles from "./User.module.css";
 import UserContext from "../../../../store/user/user-context";
-import LogutIcon from "../Icons/logout.svg";
+import {ReactComponent as LogutIcon} from "../Icons/logout.svg";
 import UserSelect from "./UserSelect";
 
 const User = (props) => {
@@ -37,7 +37,7 @@ const User = (props) => {
                     </div>
                     :
                     <div className={styles['collapsed-logout']}>
-                        <button type="submit" title={'Выйти ' + userContext.userName} style={{backgroundImage: `url(${LogutIcon})`}}></button>
+                        <button type="submit" title={'Выйти ' + userContext.userName}><LogutIcon /></button>
                     </div>
                 }</div>
             </form>

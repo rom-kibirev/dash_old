@@ -1,8 +1,8 @@
 .container {
     @apply px-4 mb-2 md:mb-4 flex
 }
-.container .icon {
-    @apply w-6 h-6 mt-1 bg-contain bg-center bg-no-repeat
+.container svg {
+    @apply w-6 h-6 mt-1
 }
 .container select {
     @apply bg-pult-button ml-3 px-2 py-0.5 md:py-1 rounded-md w-full
@@ -12,8 +12,11 @@
     @apply px-0 mb-0.5 md:mb-1 xl:mb-2 flex justify-center
 }
 .collapsed .icon {
-    @apply w-7 h-7 md:w-8 md:h-8 xl:w-10 xl:h-10 bg-pult-button rounded-full cursor-pointer bg-contain bg-60% bg-center bg-no-repeat
+    @apply bg-pult-button rounded-full cursor-pointer p-1
     transition-all duration-300 ease-in-out
+}
+.collapsed .icon svg {
+    @apply w-6 h-6 p-0.5
 }
 .collapsed .icon:hover {
     @apply bg-pult-hover shadow-md shadow-white

@@ -1,12 +1,12 @@
 import styles from './UserSelect.module.css';
-import IconCompany from "../Icons/company.svg";
-import IconProject from "../Icons/project.svg";
-import IconEmployee from "../Icons/employee.svg";
+import {ReactComponent as IconCompany} from "../Icons/company.svg";
+import {ReactComponent as IconProject} from "../Icons/project.svg";
+import {ReactComponent as IconEmployee} from "../Icons/employee.svg";
 
 const template = {
-    company: {title: 'Выбирите компанию', icon: IconCompany},
-    project: {title: 'Выбирите проект', icon: IconProject},
-    group: {title: 'Выбирите сотрудника', icon: IconEmployee},
+    company: {title: 'Выбирите компанию', icon: <IconCompany />},
+    project: {title: 'Выбирите проект', icon: <IconProject />},
+    group: {title: 'Выбирите сотрудника', icon: <IconEmployee />},
 };
 
 const UserSelect = (props) => {
@@ -27,7 +27,7 @@ const UserSelect = (props) => {
     if (props.state) {
         return (
             <div className={styles.container}>
-                <div className={styles.icon} style={{backgroundImage: `url(${template[props.id].icon})`}} title={template[props.id].title}></div>
+                <div title={template[props.id].title}>{template[props.id].icon}</div>
                 <select defaultValue={props.defaultValue} name={props.type} onChange={changeUserStateHandler} >
                     {props.options.map((item) => (<option value={item.id} key={item.id}>{item.name}</option>))}
                 </select>
@@ -38,12 +38,7 @@ const UserSelect = (props) => {
 
         return (
             <div className={styles.collapsed}>
-                <div
-                    className={styles.icon}
-                    style={{ backgroundImage: `url(${template[props.id].icon})` }}
-                    title={template[props.id].title}
-                    onClick={setShowListId}
-                ></div>
+                <div className={styles.icon} title={template[props.id].title} onClick={setShowListId}>{template[props.id].icon}</div>
                 <ul className={`${styles.dropdown} ${props.shownList === props.id ? styles['dropdown-show'] : ''}`} onMouseLeave={() => props.showListHandler(false)}>
                     {props.options.map((item) => (
                         <li

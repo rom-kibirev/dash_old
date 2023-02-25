@@ -67,7 +67,6 @@
 }
 .collapsed-item .item-list-name {
     @apply w-8 text-center my-0.5 rounded-lg border border-pult-hover cursor-pointer
-    transition-all duration-300 ease-in-out
 }
 .collapsed-item .item-list-name:hover {
     @apply bg-pult-hover
