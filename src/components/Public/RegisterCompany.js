@@ -2,6 +2,7 @@ import React,{useState, useEffect,useContext} from "react";
 import styles from "./register.module.css";
 import Button from "../UI/Button";
 import Header from "./Header";
+import InputReg from "../UI/InputReg";
 
 const RegisterCompany = (props) => {
 
@@ -56,74 +57,24 @@ const RegisterCompany = (props) => {
                                 <form>
                                     <h2>Укажите реквизиты компании</h2>
                                     <div className={styles.legal}>
-                                        <div>
-                                            <label>Наименование компании</label>
-                                            <input name="company_name" type="text" disabled={true} title={legalData.name.short_with_opf} value={legalData.name.short_with_opf}/>
-                                        </div>
-                                        <div>
-                                            <label>Юридический адрес</label>
-                                            <input name="legal_address" type="text" disabled={true} title={legalData.address.unrestricted_value} value={legalData.address.unrestricted_value} />
-                                        </div>
-                                        <div>
-                                            <label>Почтовый адрес</label>
-                                            <input name="postal_address" type="text" value={legalData.address.unrestricted_value} />
-                                        </div>
-                                        <div>
-                                            <label>КПП</label>
-                                            <input name="kpp" type="number" disabled={true} title={legalData.kpp} value={legalData.kpp} />
-                                        </div>
-                                        <div>
-                                            <label>ИНН</label>
-                                            <input name="inn" type="number" disabled={true} title={legalData.inn} value={legalData.inn} />
-                                        </div>
-                                        <div>
-                                            <label>ОГРН</label>
-                                            <input name="ogrn" type="number" disabled={true} title={legalData.ogrn} value={legalData.ogrn} />
-                                        </div>
-                                        <div>
-                                            <label>ОКПО</label>
-                                            <input name="okpo" type="number" disabled={true} title={legalData.okpo} value={legalData.okpo} />
-                                        </div>
-                                        <div>
-                                            <label>Банк</label>
-                                            <input name="bank_name" type="text" />
-                                        </div>
-                                        <div>
-                                            <label>Р/С</label>
-                                            <input name="bank_account" type="number" />
-                                        </div>
-                                        <div>
-                                            <label>К/С</label>
-                                            <input name="ks" type="number" />
-                                        </div>
-                                        <div>
-                                            <label>БИК</label>
-                                            <input name="bik" type="number" />
-                                        </div>
-                                        <div>
-                                            <label>Ген директор (Ф.И.О.)</label>
-                                            <input name="director" type="text" disabled={true} title={legalData.management.name} value={legalData.management.name} />
-                                        </div>
-                                        <div>
-                                            <label>Основание полномочий</label>
-                                            <input name="authority" type="text" />
-                                        </div>
-                                        <div>
-                                            <label>Адрес официальной эл. почты</label>
-                                            <input name="email" type="email" />
-                                        </div>
-                                        <div>
-                                            <label>Контактный телефон</label>
-                                            <input name="phone" type="tel" maxLength="17" />
-                                        </div>
-                                        <div>
-                                            <label>Адрес эл. почты администратора</label>
-                                            <input name="email_administrator" type="email" />
-                                        </div>
-                                        <div>
-                                            <label>Должность</label>
-                                            <input name="position" type="text" />
-                                        </div>
+                                        <InputReg title="Наименование компании" type="text" name="company_name" disabled="true" value={legalData.name.short_with_opf} />
+                                        <InputReg title="Юридический адрес" type="text" name="legal_address" disabled="true" value={legalData.address.unrestricted_value} />
+                                        <InputReg title="Почтовый адрес" type="text" name="postal_address" disabled="false" value={legalData.address.unrestricted_value} />
+                                        <InputReg title="КПП" type="number" name="kpp" disabled="true" value={legalData.kpp} />
+                                        <InputReg title="ИНН" type="number" name="inn" disabled="true" value={legalData.inn} />
+                                        <InputReg title="ОГРН" type="number" name="ogrn" disabled="true" value={legalData.ogrn} />
+                                        <InputReg title="ОКПО" type="number" name="okpo" disabled="true" value={legalData.okpo} />
+                                        <InputReg title="Банк" type="text" name="bank_name" disabled="false" value="" />
+                                        <InputReg title="Р/С" type="number" name="bank_account" disabled="false" value="" />
+                                        <InputReg title="К/С" type="number" name="ks" disabled="false" value="" />
+                                        <InputReg title="БИК" type="number" name="bik" disabled="false" value="" />
+                                        <InputReg title="Ген директор (Ф.И.О.)" type="text" name="director" disabled="false" value={legalData.management.name} />
+                                        <InputReg title="Основание полномочий" type="text" name="authority" disabled="false" value="" />
+                                        <InputReg title="Адрес официальной эл. почты" type="email" name="email" disabled="false" value="" />
+                                        <InputReg title="Контактный телефон" type="tel" name="phone" disabled="false" value="" max="17" />
+                                        <InputReg title="Адрес эл. почты администратора" type="email" name="email_administrator" disabled="false" value="" />
+                                        <InputReg title="Адрес эл. почты администратора" type="email" name="email_administrator" disabled="false" value="" />
+                                        <InputReg title="Должность" type="text" name="position" disabled="false" value="" />
                                     </div>
                                     <Button type="submit">Зарегистрировать компанию</Button>
                                     <Button onClick={()=> setLegalData(false)}>Назад</Button>
@@ -133,7 +84,7 @@ const RegisterCompany = (props) => {
                                     <h2>Укажите ИНН ИП или Юридического лица</h2>
                                     {innError ? <div className={styles.warning}>{innError}</div> : ""}
                                     <div className="my-2">
-                                        <input type="number" onChange={(event) => setInn(event.target.value)}/>
+                                        <input type="number" onChange={(event) => setInn(event.target.value.trim(' '))}/>
                                     </div>
                                     <div className="text-gray-500 text-sm italic">
                                         <div>7810245481 - юр лицо</div>
