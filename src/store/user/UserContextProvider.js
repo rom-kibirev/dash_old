@@ -4,6 +4,7 @@ import UserContext from './user-context';
 export const UserContextProvider = (props) => {
 
     const [userData, setUserData] = useState();
+    // const serverUrl = './requests/index.php';
     const serverUrl = 'http://localhost:8000/';
 
     useEffect(() => {

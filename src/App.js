@@ -1,10 +1,10 @@
 import React from 'react';
-import Work from "./components/Work/Work";
+import Welcome from "./components/Welcome";
 
 function App() {
   return (
       <React.Fragment>
-         <Work />
+         <Welcome />
       </React.Fragment>
   );
 }

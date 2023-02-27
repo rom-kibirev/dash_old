@@ -1,0 +1,28 @@
+.page {
+    @apply h-screen flex flex-col
+}
+.section {
+    @apply grow flex justify-center
+}
+.container {
+    @apply w-max h-max p-3 my-auto bg-zinc-100 rounded-md shadow-xl shadow-zinc-300 text-center block border border-zinc-300
+}
+.container h2 {
+    @apply mb-2
+}
+
+.warning {
+    @apply text-red-600 text-sm
+}
+.legal {
+    @apply grid grid-cols-2 gap-2 my-4
+}
+.legal label {
+    @apply block text-sm text-left text-zinc-400
+}
+.container input {
+    @apply border border-pult-selected rounded-md w-full px-2 py-1
+}
+.container input:disabled {
+    @apply text-zinc-600 bg-zinc-200 cursor-not-allowed
+}
