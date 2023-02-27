@@ -1,0 +1,29 @@
+.button {
+    @apply block md:inline-block mx-auto md:mx-2 my-2 md:my-auto w-full md:w-auto text-sm md:text-base text-white bg-pult rounded px-1 py-0.5 md:px-2 md:py-1 shadow shadow-black
+    transition-all duration-300 ease-in-out
+}
+
+.button:hover,
+.button:active {
+    @apply bg-pult-hover
+    transition-all duration-300 ease-in-out
+}
+
+button:disabled,
+button:focus:disabled,
+button:hover:disabled,
+button:active:disabled {
+    @apply bg-pult-selected text-pult cursor-not-allowed
+}
+
+.link {
+    @apply bg-violet-900
+    transition-all duration-300 ease-in-out
+}
+.link:hover {
+    @apply bg-violet-600
+    transition-all duration-300 ease-in-out
+}
+.link a {
+    @apply block
+}

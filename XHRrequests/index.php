@@ -3,13 +3,12 @@ header('Access-Control-Allow-Origin: http://localhost:3000');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $data = $_POST['data'];
-    $sourceFile = $_POST['source'];
-    $fp = fopen("./data/". $_POST['place'], "w+");
-    fwrite($fp, $data);
-    fclose($fp);
-    header('Content-Type: application/json');
-    echo 'Данные сохранены - ' . $_POST['file'];
+    $filename = "./data/". $_POST['place'];
+    $content = $_POST['data'];
+    if (file_exists($filename)) file_put_contents($filename, $content);
+    else file_put_contents($filename, $content);
+
+    http_response_code(200);
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $filename = './data/'.$_GET['filename'].'.json';
