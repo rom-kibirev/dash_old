@@ -1,12 +1,14 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useReducer} from "react";
+import { useNavigate  } from 'react-router-dom';
+
 import styles from "./register.module.css";
-import Button from "../UI/Buttons/Button";
+
 import Header from "./Header";
-import InputReg from "../UI/Inputs/InputReg";
+import Section from "../UI/Sections/Section";
 import Grids from "../UI/Grids/Grids";
 import Input from "../UI/Inputs/Input";
-import Section from "../UI/Sections/Section";
-import { useNavigate  } from 'react-router-dom';
+import InputReg from "../UI/Inputs/InputReg";
+import Button from "../UI/Buttons/Button";
 
 const RegisterCompany = (props) => {
 
@@ -54,36 +56,35 @@ const RegisterCompany = (props) => {
 
     const registerUserHandler = (event) => {
         event.preventDefault();
-
-        const errors = [];
-
-        const data = {'type': event.target.dataset.ownership};
-        event.target.querySelectorAll('input').forEach(input => {
-            data[input.name] = input.value;
-            if (input.value === '') errors.push(input.name);
-        });
-
-        setInputError(errors);
-
-        if (inputError.length === 0) {
-
-            fetch(serverUrl, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                body: new URLSearchParams({
-                    'place': 'new-user.json',
-                    'data': JSON.stringify(data)
-                }),
-            }).then(result => {
-                if (result.ok) {
-                    navigate('/chose-tarif');
-                }
-            }).catch(error => {
-                console.log('\n error create new user');
-            });
-
-            console.log('\n data', data);
-        }
+        // const errors = [];
+        //
+        // const data = {'type': event.target.dataset.ownership};
+        // event.target.querySelectorAll('input').forEach(input => {
+        //     data[input.name] = input.value;
+        //     if (input.value === '') errors.push(input.name);
+        // });
+        //
+        // setInputError(errors);
+        //
+        // if (inputError.length === 0) {
+        //
+        //     fetch(serverUrl, {
+        //         method: 'POST',
+        //         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+        //         body: new URLSearchParams({
+        //             'place': 'new-user.json',
+        //             'data': JSON.stringify(data)
+        //         }),
+        //     }).then(result => {
+        //         if (result.ok) {
+        //             navigate('/chose-tarif');
+        //         }
+        //     }).catch(error => {
+        //         console.log('\n error create new user');
+        //     });
+        //
+        //     console.log('\n data', data);
+        // }
     };
 
     return (
@@ -104,45 +105,111 @@ const RegisterCompany = (props) => {
                             <form onSubmit={registerUserHandler} data-ownership={legalData.type}>
                                 <h2>Укажите реквизиты лица</h2>
                                 <Grids cols={2}>
-                                    {legalData.type === "LEGAL" ?
-                                        <React.Fragment>
-                                            <InputReg title="Наименование компании" type="text" name="company_name" disabled="true" setValue={legalData.name.short_with_opf} />
-                                            <InputReg title="Юридический адрес" type="text" name="legal_address" disabled="true" setValue={legalData.address.unrestricted_value} />
-                                            <InputReg errors={inputError} title="Почтовый адрес" type="text" name="postal_address" setValue={legalData.address.unrestricted_value} />
-                                            <InputReg title="КПП" type="number" name="kpp" disabled="true" setValue={legalData.kpp}/>
-                                            <InputReg title="ИНН" type="number" name="inn" disabled="true" setValue={legalData.inn}/>
-                                            <InputReg title="ОГРН" type="number" name="ogrn" disabled="true" setValue={legalData.ogrn}/>
-                                            <InputReg title="ОКПО" type="number" name="okpo" disabled="true" setValue={legalData.okpo}/>
-                                            <InputReg errors={inputError} title="Банк" type="text" name="bank_name"/>
-                                            <InputReg errors={inputError} title="Р/С" type="number" name="bank_account"/>
-                                            <InputReg errors={inputError} title="К/С" type="number" name="ks"/>
-                                            <InputReg errors={inputError} title="БИК" type="number" name="bik"/>
-                                            {legalData.management.name ?
-                                                <InputReg title="Ген директор (Ф.И.О.)" type="text" name="director" disabled="true" setValue={legalData.management.name}/>
+                                    <InputReg
+                                        title="Наименование компании"
+                                        name="company_name"
+                                        type="text"
+                                        setValue={legalData.name.short_with_opf}
+                                        disabled="true"
+                                    />
+                                    <InputReg
+                                        title="Юридический адрес"
+                                        name="legal_address"
+                                        type="text"
+                                        setValue={legalData.address.unrestricted_value}
+                                        disabled={legalData.type === "LEGAL" ? true : ''}
+                                    />
+                                    <InputReg
+                                        title="Почтовый адрес"
+                                        name="postal_address"
+                                        type="text"
+                                        setValue={legalData.address.unrestricted_value}
+                                    />
+                                    {legalData.type === "LEGAL" ? <InputReg
+                                        title="КПП"
+                                        name="kpp"
+                                        type="number"
+                                        setValue={legalData.kpp}
+                                        disabled="true"
+                                    /> : ''}
+                                    <InputReg
+                                        title="ИНН"
+                                        name="inn"
+                                        type="number"
+                                        setValue={legalData.inn}
+                                        disabled="true"
+                                    />
+                                    <InputReg
+                                        title="ОГРН"
+                                        name="ogrn"
+                                        type="number"
+                                        setValue={legalData.ogrn}
+                                        disabled="true"
+                                    />
+                                    <InputReg
+                                        title="ОКПО"
+                                        name="okpo"
+                                        type="number"
+                                        setValue={legalData.okpo}
+                                        disabled="true"
+                                    />
+                                    <InputReg
+                                        title="Банк"
+                                        name="bank_name"
+                                        type="text"
+                                    />
+                                    <InputReg
+                                        title="Р/С"
+                                        name="bank_account"
+                                        type="number"
+                                    />
+                                    <InputReg
+                                        title="К/С"
+                                        name="ks"
+                                        type="number"
+                                    />
+                                    <InputReg
+                                        title="БИК"
+                                        name="bik"
+                                        type="number"
+                                    />
+                                    <InputReg
+                                        title="Ген директор (Ф.И.О.)"
+                                        name="director"
+                                        type="text"
+                                        setValue={
+                                            legalData.type === "LEGAL" ?
+                                                legalData.management.name ? legalData.management.name : ''
                                                 :
-                                                <InputReg errors={inputError} title="Ген директор (Ф.И.О.)" type="text" name="director"/>
-                                            }
-                                        </React.Fragment>
-                                        :
-                                        <React.Fragment>
-                                            <InputReg title="Наименование компании" type="text" name="company_name" disabled="true" setValue={legalData.name.short_with_opf} />
-                                            <InputReg errors={inputError} title="Юридический адрес" type="text" name="legal_address" setValue={legalData.address.unrestricted_value} />
-                                            <InputReg errors={inputError} title="Почтовый адрес" type="text" name="postal_address" setValue={legalData.address.unrestricted_value} />
-                                            <InputReg title="ИНН" type="number" name="inn" disabled="true" setValue={legalData.inn} />
-                                            <InputReg title="ОГРН" type="number" name="ogrn" disabled="true" setValue={legalData.ogrn} />
-                                            <InputReg title="ОКПО" type="number" name="okpo" disabled="true" setValue={legalData.okpo} />
-                                            <InputReg errors={inputError} title="Банк" type="text" name="bank_name" />
-                                            <InputReg errors={inputError} title="Р/С" type="number" name="bank_account" />
-                                            <InputReg errors={inputError} title="К/С" type="number" name="ks" />
-                                            <InputReg errors={inputError} title="БИК" type="number" name="bik" />
-                                            <InputReg errors={inputError} title="Ген директор (Ф.И.О.)" type="text" name="director" disabled="true" setValue={legalData.fio.surname + ' ' + legalData.fio.name[0] + '. ' + legalData.fio.patronymic[0] + '.'}/>
-                                        </React.Fragment>
-                                    }
-                                    <InputReg errors={inputError} title="Основание полномочий" type="text" name="authority" />
-                                    <InputReg errors={inputError} title="Адрес официальной эл. почты" type="email" name="email" />
-                                    <InputReg errors={inputError} title="Контактный телефон" type="tel" name="phone" />
-                                    <InputReg errors={inputError} title="Адрес эл. почты администратора" type="email" name="email_administrator" />
-                                    <InputReg errors={inputError} title="Должность" type="text" name="position" />
+                                                legalData.fio.surname + ' ' + legalData.fio.name[0] + '. '+ legalData.fio.patronymic[0] + '.'
+                                        }
+                                        disabled={(legalData.type === "LEGAL" && legalData.management.name === "LEGAL") ? true : ''}
+                                    />
+                                    <InputReg
+                                        title="Основание полномочий"
+                                        name="authority"
+                                        type="text"
+                                    />
+                                    <InputReg
+                                        title="Адрес официальной эл. почты"
+                                        name="email"
+                                        type="email"
+                                    />
+                                    <InputReg
+                                        title="Контактный телефон"
+                                        name="phone"
+                                        type="tel"
+                                    />
+                                    <InputReg
+                                        title="Адрес эл. почты администратора"
+                                        name="email_administrator"
+                                        type="email"
+                                    />
+                                    <InputReg
+                                        title="Должность"
+                                        name="position"
+                                        type="text"
+                                    />
                                 </Grids>
                                 <Button type="submit">Зарегистрировать компанию</Button>
                                 <Button onClick={backLegalHandler}>Назад</Button>
@@ -164,10 +231,26 @@ const RegisterCompany = (props) => {
                         <form onSubmit={registerUserHandler} data-ownership="PERSON">
                             <h2>Укажите данные лица</h2>
                             <Grids cols={2}>
-                                <InputReg errors={inputError} title="Ф.И.О." type="text" name="name" />
-                                <InputReg errors={inputError} title="Адрес официальной эл. почты" type="email" name="email" />
-                                <InputReg errors={inputError} title="Контактный телефон" type="tel" name="phone" />
-                                <InputReg errors={inputError} title="Адрес эл. почты администратора" type="email" name="email_administrator" />
+                                <InputReg
+                                    title="Ф.И.О."
+                                    name="name"
+                                    type="text"
+                                />
+                                <InputReg
+                                    title="Адрес официальной эл. почты"
+                                    name="email"
+                                    type="email"
+                                />
+                                <InputReg
+                                    title="Контактный телефон"
+                                    name="phone"
+                                    type="tel"
+                                />
+                                <InputReg
+                                    title="Адрес эл. почты администратора"
+                                    name="email_administrator"
+                                    type="email"
+                                />
                             </Grids>
                             <Button type="submit">Зарегистрировать компанию</Button>
                             <Button onClick={backOwnershipHandler}>Назад</Button>
