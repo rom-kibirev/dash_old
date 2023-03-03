@@ -1,0 +1,12 @@
+.invalid input {
+    @apply bg-red-200 text-red-500 border-red-600
+}
+.invalid label {
+    @apply text-red-500
+}
+input {
+    @apply border-zinc-600 border rounded-md p-1 mb-1
+}
+label {
+    @apply block
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Tarif - 1",
+    "price": 10000
+  },
+  {
+    "name": "Tarif - 2",
+    "price": 20000
+  },
+  {
+    "name": "Tarif - 3",
+    "price": 10000.01
+  }
+]

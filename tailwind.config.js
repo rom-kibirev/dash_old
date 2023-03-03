@@ -17,8 +17,8 @@ module.exports = {
         'warning': '#ff9664',
       },
       fontSize: {
-        'mm': ['0.8rem', {
-          lineHeight: '1.1rem',
+        'mm': ['0.7rem', {
+          lineHeight: '1rem',
           letterSpacing: '-0.01em',
           fontWeight: '400',
         }],

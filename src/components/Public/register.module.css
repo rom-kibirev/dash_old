@@ -1,10 +1,15 @@
-.page {
-    @apply h-screen flex flex-col
+.field label {
+    @apply block text-mm text-left text-zinc-400
 }
-.warning-message {
-    @apply text-center bg-warning text-pult font-bold
+.field input, .input {
+    @apply border border-pult-selected rounded-md w-full px-2 py-1
 }
-
-.warning {
-    @apply text-red-600 text-sm
+.field input:disabled {
+    @apply text-zinc-600 bg-zinc-200 cursor-not-allowed
+}
+.invalid input {
+    @apply border-red-600 bg-red-100
+}
+.invalid label {
+    @apply text-red-600
 }
