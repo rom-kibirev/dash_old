@@ -1,15 +1,16 @@
 import Button from "../UI/Buttons/Button";
-import React from "react";
-
+import {useNavigate} from "react-router-dom";
 
 const Header = (props) => {
 
+    const navigate = useNavigate();
+
     return (
         <header className="grid grid-cols-4 gap-3 text-center m-2">
-            <a href="/">Home</a>
+            <Button onClick={() => navigate("/")}>Home</Button>
             <div>Войти</div>
-            <Button className="link" ><a className="w-full" href="/register">Зарегистрироваться</a></Button>
-            <div><a href="/tenders">Тендеры</a></div>
+            <Button onClick={() => navigate("/registration-company")}>Зарегистрироваться</Button>
+            <Button onClick={() => navigate("/tenders")}>Тендеры</Button>
         </header>
     );
 }

@@ -1,3 +1,6 @@
+.field {
+    @apply my-1 md:my-2
+}
 .field label {
     @apply block text-mm text-left text-zinc-400
 }

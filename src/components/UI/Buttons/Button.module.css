@@ -1,5 +1,5 @@
 .button {
-    @apply block md:inline-block mx-auto md:mx-2 my-2 md:my-auto w-full md:w-auto text-sm md:text-base text-white bg-pult rounded px-1 py-0.5 md:px-2 md:py-1 shadow shadow-black
+    @apply md:inline-block md:mx-2 my-2 md:my-auto w-full md:w-auto text-sm md:text-base text-white bg-pult rounded px-1 py-0.5 md:px-2 md:py-1 shadow shadow-black
     transition-all duration-300 ease-in-out
 }
 
@@ -25,5 +25,5 @@ button:active:disabled {
     transition-all duration-300 ease-in-out
 }
 .link a {
-    @apply block
+    @apply block w-full
 }

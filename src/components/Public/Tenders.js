@@ -1,9 +1,18 @@
+import Page from "../UI/Sections/Page";
+import Header from "./Header";
+import Section from "../UI/Sections/Section";
+import React from "react";
 
 
 const Tenders = (props) => {
 
     return (
-        <div>Tenders</div>
+        <Page>
+            <Header />
+            <Section>
+                Tenders
+            </Section>
+        </Page>
     );
 }
 

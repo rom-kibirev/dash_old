@@ -1,10 +1,10 @@
 import React from 'react';
-import Welcome from "./components/Welcome";
+import PublicRotes from "./components/PublicRotes";
 
 function App() {
   return (
       <React.Fragment>
-         <Welcome />
+         <PublicRotes />
       </React.Fragment>
   );
 }

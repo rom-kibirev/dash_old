@@ -35,7 +35,6 @@ const ProjectControl = (props) => {
                 .catch(error => {
                     console.log('\n error project control request');
                 });
-        } else {
         }
     },[group,setGetData,serverUrl]);
 

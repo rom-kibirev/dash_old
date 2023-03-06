@@ -1,19 +1,19 @@
 import React,{useState, useEffect} from "react";
+import { useNavigate  } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
-import { useNavigate  } from 'react-router-dom';
 
 import styles from "./register.module.css";
 
-import Header from "./Header";
-import Page from "../UI/Sections/Page";
-import Section from "../UI/Sections/Section";
-import Grids from "../UI/Grids/Grids";
-import Button from "../UI/Buttons/Button";
+import Header from "../Header";
+import Page from "../../UI/Sections/Page";
+import Section from "../../UI/Sections/Section";
+import Grids from "../../UI/Grids/Grids";
+import Button from "../../UI/Buttons/Button";
 
 const RegisterCompany = (props) => {
 
-    const serverUrl = 'http://localhost:8000/';
+    const serverUrl = props.serverUrl;
     const navigate = useNavigate ();
 
     const [ownership,setOwnership] = useState(false);
@@ -43,7 +43,7 @@ const RegisterCompany = (props) => {
         return () => {
             clearTimeout(timer);
         };
-    },[inn]);
+    },[inn,serverUrl]);
 
     const {register,handleSubmit,formState: { errors },reset,setValue} = useForm();
     const backLegalHandler = () => {
@@ -58,6 +58,7 @@ const RegisterCompany = (props) => {
     };
 
     const registerUserHandler = (data) => {
+
         fetch(serverUrl, {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
@@ -67,7 +68,7 @@ const RegisterCompany = (props) => {
             }),
         }).then(result => {
             if (result.ok) {
-                navigate('/chose-tarif');
+                navigate('/registration-success');
             }
         }).catch(error => {
             console.log('\n error create new user');
@@ -105,6 +106,7 @@ const RegisterCompany = (props) => {
                             </form>
                             :
                             <form onSubmit={handleSubmit(registerUserHandler)}>
+                                {props.chosenTariff ? setValue('tariff', props.chosenTariff) : setValue('tariff', null) }
                                 <h2>Укажите реквизиты лица</h2>
                                 <Grids cols={2}>
                                     <div className={`${styles.field} ${errors.company_name ? styles.invalid : ''}`}>
@@ -308,6 +310,7 @@ const RegisterCompany = (props) => {
                             </form>
                         :
                         <form onSubmit={handleSubmit(registerUserHandler)}>
+                            {props.chosenTariff ? setValue('tariff', props.chosenTariff) : setValue('tariff', null) }
                             <h2>Укажите данные лица</h2>
                             <Grids cols={2}>
                                 <div className={`${styles.field} ${errors.name ? styles.invalid : ''}`}>
