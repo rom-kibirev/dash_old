@@ -1,4 +1,4 @@
-import Page from "../UI/Sections/Page";
+import PageSection from "../UI/Sections/PageSection";
 import Header from "./Header";
 import Section from "../UI/Sections/Section";
 import React from "react";
@@ -7,12 +7,12 @@ import React from "react";
 const Tenders = (props) => {
 
     return (
-        <Page>
+        <PageSection>
             <Header />
             <Section>
                 Tenders
             </Section>
-        </Page>
+        </PageSection>
     );
 }
 

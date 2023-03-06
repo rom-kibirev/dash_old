@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import { useNavigate  } from 'react-router-dom';
-import Page from "../../UI/Sections/Page";
+import PageSection from "../../UI/Sections/PageSection";
 import Section from "../../UI/Sections/Section";
 import styles from "./register.module.css";
 import Button from "../../UI/Buttons/Button";
@@ -80,7 +80,7 @@ const CreatePassword = (props) => {
 
     if (userLogin) {
         return (
-            <Page>
+            <PageSection>
                 <Section>
                     <form onSubmit={createPasswordHandler}>
                         <div className={`${styles.field} ${firstError ? styles.invalid : ''}`}>
@@ -102,7 +102,7 @@ const CreatePassword = (props) => {
                         <Button type="submit">Создать пароль</Button>
                     </form>
                 </Section>
-            </Page>
+            </PageSection>
         );
     }
 }

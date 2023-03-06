@@ -6,7 +6,7 @@ import InputMask from "react-input-mask";
 import styles from "./register.module.css";
 
 import Header from "../Header";
-import Page from "../../UI/Sections/Page";
+import PageSection from "../../UI/Sections/PageSection";
 import Section from "../../UI/Sections/Section";
 import Grids from "../../UI/Grids/Grids";
 import Button from "../../UI/Buttons/Button";
@@ -76,7 +76,7 @@ const RegisterCompany = (props) => {
     };
 
     return (
-        <Page>
+        <PageSection>
             <Header />
             <Section>
                 {!ownership ?
@@ -353,7 +353,7 @@ const RegisterCompany = (props) => {
                         </form>
                 }
             </Section>
-        </Page>
+        </PageSection>
     );
 }
 

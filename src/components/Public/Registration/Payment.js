@@ -1,7 +1,7 @@
 import {useEffect,useState} from "react";
-import Page from "../../UI/Sections/Page";
-import Section from "../../UI/Sections/Section";
 import {useNavigate} from "react-router-dom";
+import PageSection from "../../UI/Sections/PageSection";
+import Section from "../../UI/Sections/Section";
 import Button from "../../UI/Buttons/Button";
 import Grids from "../../UI/Grids/Grids";
 
@@ -54,19 +54,19 @@ const Payment = (props) => {
         console.log('\n bill', );
     }
 
-    console.log('\n ', user, tariffs,currentTariff);
-
     if (currentTariff && currentTariff.price) {
 
+        console.log('\n ', user, tariffs,currentTariff);
+
         return (
-            <Page>
+            <PageSection>
                 <Section>
                     <h1>Выбирите способ оплаты</h1>
                     <div>{currentTariff.name + ' - ' + currentTariff.price}</div>
                     {user.ownership !== 'PERSON' ? <Button onClick={createBill}>Сформировать счет на оплату</Button> : ''}
                     <Button onClick={() => navigate('/payCards?cost=' + currentTariff.price)}>Перейти к оплате картой</Button>
                 </Section>
-            </Page>
+            </PageSection>
         );
     } else if (tariffs) {
 
@@ -84,13 +84,13 @@ const Payment = (props) => {
         }
 
         return (
-            <Page>
+            <PageSection>
                 <Section>
                     <Grids cols={3}>
                         {tariffsElements}
                     </Grids>
                 </Section>
-            </Page>
+            </PageSection>
         );
     }
 }

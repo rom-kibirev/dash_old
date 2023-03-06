@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import Header from "./Header";
-import Page from "../UI/Sections/Page";
+import PageSection from "../UI/Sections/PageSection";
 import Button from "../UI/Buttons/Button";
 import Grids from "../UI/Grids/Grids";
 import {useNavigate} from "react-router-dom";
@@ -41,12 +41,12 @@ const Welcome = (props) => {
     }
 
     return (
-        <Page>
+        <PageSection>
             <Header/>
             <Grids cols={3}>
                 {tariffsElements}
             </Grids>
-        </Page>
+        </PageSection>
     );
 }
 
